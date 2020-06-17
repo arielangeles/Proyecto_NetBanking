@@ -58,11 +58,10 @@ namespace InternetBankingFinal.Controllers
                 #region Save to Database 
 
                 try
-                {
-                           
-                    using (BankingEF db = new BankingEF())
+                {                          
+                    using (BankingEntities db = new BankingEntities())
                     {
-                        db.User.Add(user);
+                        db.Users.Add(user);
                         db.SaveChanges();
 
                         //Send Email to User
@@ -101,11 +100,11 @@ namespace InternetBankingFinal.Controllers
         public ActionResult VerificarCuenta(string id)
         {
             bool Status = false;
-            using (BankingEF db = new BankingEF())
+            using (BankingEntities db = new BankingEntities())
             {
                 db.Configuration.ValidateOnSaveEnabled = false;
 
-                var v = db.User.Where(a => a.ActivationCode == new Guid(id)).FirstOrDefault();
+                var v = db.Users.Where(a => a.ActivationCode == new Guid(id)).FirstOrDefault();
                 if (v != null)
                 {
                     v.IsEmailVerified = true;
@@ -136,9 +135,9 @@ namespace InternetBankingFinal.Controllers
         public ActionResult Login(UserLogin login, string ReturnUrl = "")
         {
             string message = "";
-            using (BankingEF db = new BankingEF())
+            using (BankingEntities db = new BankingEntities())
             {
-                var v = db.User.Where(a => a.Correo == login.Correo).FirstOrDefault();
+                var v = db.Users.Where(a => a.Correo == login.Correo).FirstOrDefault();
                 if (v != null)
                 {
                     if (!v.IsEmailVerified)
@@ -199,9 +198,9 @@ namespace InternetBankingFinal.Controllers
         [NonAction]
         public bool CorreoExist(string correo)
         {
-            using (BankingEF db = new BankingEF())
+            using (BankingEntities db = new BankingEntities())
             {
-                var v = db.User.Where(a => a.Correo == correo).FirstOrDefault();
+                var v = db.Users.Where(a => a.Correo == correo).FirstOrDefault();
                 return v != null;
 
             }
@@ -224,7 +223,7 @@ namespace InternetBankingFinal.Controllers
 
             var smtp = new SmtpClient
             {
-                Host = "smtp.gmail.com",
+                Host = "smtp.gmail.com",  
                 Port = 587,
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,

@@ -13,10 +13,10 @@ namespace InternetBankingFinal.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BankingEF : DbContext
+    public partial class BankingEntities : DbContext
     {
-        public BankingEF()
-            : base("name=BankingEF")
+        public BankingEntities()
+            : base("name=BankingEntities")
         {
         }
     
@@ -26,6 +26,6 @@ namespace InternetBankingFinal.Models
         }
     
         public virtual DbSet<Log4NetLog> Log4NetLog { get; set; }
-        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

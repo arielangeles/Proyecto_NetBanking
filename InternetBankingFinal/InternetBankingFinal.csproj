@@ -462,6 +462,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\IBankingDB.mdf" />
+    <Content Include="App_Data\IBankingDB_log.ldf">
+      <DependentUpon>IBankingDB.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -473,21 +477,14 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\BankingModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BankingModel.Context.cs</LastGenOutput>
       <DependentUpon>BankingModel.edmx</DependentUpon>
+      <LastGenOutput>BankingModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\BankingModel.edmx.sql" />
     <Content Include="Models\BankingModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BankingModel.edmx</DependentUpon>
       <LastGenOutput>BankingModel.cs</LastGenOutput>
-    </Content>
-    <EntityDeploy Include="Models\BankingModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BankingModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\BankingModel.edmx.diagram">
-      <DependentUpon>BankingModel.edmx</DependentUpon>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -507,6 +504,13 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <EntityDeploy Include="Models\BankingModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BankingModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\BankingModel.edmx.diagram">
+      <DependentUpon>BankingModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -563,9 +567,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\NetBank.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
